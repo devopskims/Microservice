@@ -1,0 +1,19 @@
+service: sample-lambdaa
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: ap-northeast-2
+  # memorySize: 128
+functions:
+  app:
+    handler: node.handler
+    events: 
+      - httpApi: 
+          path: /send
+          method: post
+          # cors: true
+      - httpApi: 
+          path: /status
+          method: get
+          # cors: true

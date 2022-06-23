@@ -1,0 +1,22 @@
+service: add-lambdaa
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-northeast-2
+
+functions:
+  app:
+    handler: index.handler 
+    events:
+      - http:
+          path: /status
+          method: get
+          cors: true
+      - http:
+          path: /send
+          method: post
+          cors: true
+plugins:
+  - serverless-lift
